@@ -3,7 +3,7 @@ Cheatsheet project for React JS with notes about constructors, state, props, eve
 
 Origin: https://www.youtube.com/watch?v=Ke90Tje7VS0&t=649s
 
-**TIPS & CHEATSHEET:
+**TIPS & CHEATSHEET:**
 
  - *<React.Fragment>* Allows us to render various tags without using an unnecesary div
  - We Can Dynamically render styles by using methods inside the class (rather than in the Render method so we can keep it clean).
