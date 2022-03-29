@@ -34,3 +34,19 @@ Origin: https://www.youtube.com/watch?v=Ke90Tje7VS0&t=649s
 - UNMOUNT (component is removed from the DOM), Lifecyclehooks: componentWillUnmount
 
 ***SINGLE SOURCE OF TRUTH:*** There should be a single "source of truth" for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the top-down data flow.
+
+***STATELESS FUNCTIONAL COMPONENT:*** We can use arrow functions to render simple components
+```
+const NavBar = ({ totalCounters }) => {
+  return (
+    <nav className="navbar navbar-light bg-light">
+      <a className="navbar-brand" href="#">
+        Navbar{" "}
+        <span className="badge badge-pill badge-secondary">
+          {totalCounters}
+        </span>
+      </a>
+    </nav>
+  );
+};
+```
