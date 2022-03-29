@@ -23,19 +23,23 @@ Origin: https://www.youtube.com/watch?v=Ke90Tje7VS0&t=649s
    onClick={() => this.props.onDelete(this.props.counter.id)}
    ```
  - We cannot call setState from the constructor because it can only be called when the element is rendered and placed in the DOM
+ - When a component is rendered all of its children are rendered recursively
    
 ***PROPS vs. STATE:***
 - props: includes data that we give to a component (readonly)
 - state: includes data that is local/private to that component (other components can't access it)
 
 ***LIFECYCLES & LIFECYCLE HOOKS:***
-- MOUNT (instance of component is created and inserted into the DOM), Lifecyclehooks: constructor, render componentDidMount
-- UPDATE (change in "props" or "state"), Lifecyclehooks: render, componentDidUpdate
-- UNMOUNT (component is removed from the DOM), Lifecyclehooks: componentWillUnmount
+- MOUNT (instance of component is created and inserted into the DOM)
+  - Lifecyclehooks: constructor, render, componentDidMount
+- UPDATE (change in "props" or "state")
+  - Lifecyclehooks: render, componentDidUpdate
+- UNMOUNT (component is removed from the DOM)
+  - Lifecyclehooks: componentWillUnmount
 
-***SINGLE SOURCE OF TRUTH:*** There should be a single "source of truth" for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the top-down data flow.
+***LIFTING THE STATE & SINGLE SOURCE OF TRUTH:*** We can have multiple components that share the same data and are in sync. There should be a single "source of truth" for any data that changes in a React application. Usually, the state is first added to the component that needs it for rendering. Then, if other components also need it, you can lift it up to their closest common ancestor. Instead of trying to sync the state between different components, you should rely on the top-down data flow. (we use props for that)
 
-***STATELESS FUNCTIONAL COMPONENT:*** We can use arrow functions to render simple components
+***STATELESS FUNCTIONAL COMPONENT:*** We can use arrow functions to render simple components but SFCs do not have lifecycle hooks
 ```
 const NavBar = ({ totalCounters }) => {
   return (
@@ -49,4 +53,8 @@ const NavBar = ({ totalCounters }) => {
     </nav>
   );
 };
+```
+***OBJECT DESTRUCTURING:*** JavaScript feature that allows us to extract multiple pieces of data from an array or object and assign them to their own variables.
+```
+const { onReset, counters, onIncrement, onDecrement, onDelete } = this.props;
 ```
